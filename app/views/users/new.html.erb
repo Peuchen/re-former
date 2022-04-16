@@ -35,6 +35,18 @@
 -->
 
 <!-- Option 3: #form_with -->
+
+<% if @user.errors.any? %>
+  <div id="error_explainer">
+    <p><%= pluralize(@user.errors.count, "error") %> prevented this user from being saved:</p>
+    <ul>
+    <% @user.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div>
 
 <%= form_with model: @user do |form| %>
